@@ -27,13 +27,14 @@ CHECKROOT(){
 echo "script started executing at $timestamp" &>>$logfilename
 
 CHECKROOT
+
 dnf install mysql-server -y &>>$logfilename
 validate $? "installing mysql server"
 
-systemctl enable mysqld
+systemctl enable mysqld &>>$logfilename
 validate $? "enabling mysql server"
 
-systemctl start mysqld
+systemctl start mysqld &>>$logfilename
 validate $? "starting mysql server"
 
 mysql_secure_installation --set-root-pass ExpenseApp@1
