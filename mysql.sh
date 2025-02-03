@@ -26,7 +26,7 @@
     }
     echo "script started executing at $timestamp" &>>$logfilename
 
-    CHECKROOT()
+    CHECKROOT
 
     dnf install mysql-server -y &>>$logfilename
     validate $? "installing mysql server"
