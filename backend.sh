@@ -45,8 +45,13 @@ validate $? "enabling nodejs module"
 dnf install nodejs -y &>>$logfilename
 validate $? "installing nodejs"
 
-useradd expense
-validate $? "adding user expense"
+id expense &>>$logfilename
+if {$? -ne 0};then
+    useradd expense
+    validate $? "adding expense user"
+else
+    echo -e "user expense already exists..... $Y skipping $N"
+fi
 
 mkdir /app
 validate $? "creating app directory"
