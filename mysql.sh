@@ -44,10 +44,7 @@ validate $? "enabling mysql server"
 systemctl start mysqld &>>$logfilename
 validate $? "starting mysql server"
 
-mysql_secure_installation --set-root-pass ExpenseApp@1
-validate $? "setting root password"
-
-mysql -h mysql.lokeshportfo.site -u root -pExpenseApp@1 -e "show databases;" &>>$logfilename
+mysql -h mysql.lokeshportfo.site -u root -pExpenseApp@1 -e 'show databases;' &>>$logfilename
 
 if [ $? -ne 0 ];then
     echo "ERROR:: mysql root password not setup properly" &>>$logfilename
