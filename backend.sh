@@ -60,6 +60,9 @@ curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expen
 validate $? "downloading backend code"
 
 cd /app
+rm -rf /app/*
+validate $? "cleaning app directory"
+
 unzip /tmp/backend.zip &>>$logfilename
 validate $? "unzipping backend code"
 
@@ -83,5 +86,5 @@ validate $? "reloading daemon"
 systemctl enable backend &>>$logfilename
 validate $? "enabling backend"
 
-systemctl start backend &>>$logfilename
+systemctl restart backend &>>$logfilename
 validate $? "starting backend"
