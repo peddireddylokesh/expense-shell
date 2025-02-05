@@ -64,9 +64,8 @@ rm -rf /app/*
 validate $? "cleaning app directory"
 
 unzip /tmp/backend.zip &>>$logfilename
-validate $? "unzipping backend code"
+validate $? "unzipping  backend code"
 
-cd /app
 npm install &>>$logfilename
 validate $? "installing dependencies nodejs modules"
 
@@ -76,7 +75,7 @@ cp /home/ec2-user/expense-shell/backend.service /etc/systemd/system/backend.serv
 dnf install mysql -y &>>$logfilename
 validate $? "installing mysql client"
 
-mysql -h mysql.lokeshportfo.site -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$logfilename
+mysql -h mysql.lokeshportfo.site -u root -pExpenseApp@1 < /app/schema/backend.sql &>>$logfilename
 validate $? "setting up the transaction schema and tables" 
 
 
