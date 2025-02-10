@@ -33,6 +33,9 @@ CHECKROOT(){
 }
 echo "script started executing at $timestamp" &>>$logfilename
 
+mkdir -p $Log_folder
+echo "script started executing at $timestamp" &>>$logfilename
+
 CHECKROOT
 
 dnf install nginx -y 
