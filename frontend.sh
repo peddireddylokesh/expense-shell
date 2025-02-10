@@ -56,7 +56,7 @@ validate $? "changing directory to html directory"
 unzip /tmp/frontend.zip &>>$logfilename
 validate $? "extracting frontend code"
 
-cp /home/ec2-user/exxpense-shell/expense.conf /etc/nginx/default.d/expense.conf
+cp /home/ec2-user/expense-shell/expense.conf /etc/nginx/default.d/expense.conf
 validate $? "copying expense configuration"
 
 systemctl restart nginx &>>$logfilename
