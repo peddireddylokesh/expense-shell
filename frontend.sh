@@ -38,23 +38,23 @@ echo "script started executing at $timestamp" &>>$logfilename
 
 CHECKROOT
 
-dnf install nginx -y 
+dnf install nginx -y &>>$logfilename
 validate $? "installing nginx service"
 
-systemctl enable nginx
+systemctl enable nginx &>>$logfilename
 validate $? "enabling ngnix service"
 
-rm -rf /usr/share/nginx/html/*
+rm -rf /usr/share/nginx/html/* &>>$logfilename
 validate $? "removing default files"
 
-curl -o /tmp/frontend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
+curl -o /tmp/frontend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip &>>$logfilename
 validate $? "downloading frontend code"
 
-cd /usr/share/nginx/html
+cd /usr/share/nginx/html &>>$logfilename
 validate $? "changing directory to html directory"
 
-unzip /tmp/frontend.zip
+unzip /tmp/frontend.zip &>>$logfilename
 validate $? "extracting frontend code"
 
-systemctl restart nginx
+systemctl restart nginx &>>$logfilename
 validate $? "restarting nginx service"
