@@ -75,7 +75,7 @@ cp /home/ec2-user/expense-shell/backend.service /etc/systemd/system/backend.serv
 dnf install mysql -y &>>$logfilename
 validate $? "installing mysql client"
 
-mysql -h mysql.lokeshportfo.site -u root -pExpenseApp@1 < /app/schema/backend.sql &>>$logfilename
+mysql -h mysql.lokeshportfo.site -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$logfilename
 validate $? "setting up the transaction schema and tables" 
 
 
